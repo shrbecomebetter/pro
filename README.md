@@ -18,6 +18,7 @@ pip install -r requirements.txt
 ```env:.env
 OPENAI_API_BASE = "https://api.siliconflow.cn/v1/"
 OPENAI_API_KEY = "你的专属密钥"
+MODEL="选择你自己想要的模型，推荐deepseek-ai/DeepSeek-R1"
 ```
 
 
