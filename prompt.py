@@ -79,7 +79,7 @@ class InstructionOptimizer:
             self.context.append({'role': 'user', 'content': f"请优化这个指令：{original_instruction}"})
             
             response = self.client.chat.completions.create(
-                model='Pro/deepseek-ai/DeepSeek-R1',
+                model=os.getenv('MODEL'),
                 messages=self.context,
                 temperature=0.7,
                 stream=True
