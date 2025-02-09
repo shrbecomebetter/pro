@@ -1,96 +1,49 @@
-# AI Prompt Optimizer (AI提示词优化器)
+# 智能AI项目
 
-一个基于 AI 的提示词优化工具，帮助用户生成更有效的 AI 提示词。
+🌟 这是一个连接人工智能服务的核心项目，通过简单的配置即可使用先进的AI能力
 
-## 功能特点
+## 🚀 快速开始
+### 环境要求
+1. 安装最新版 [Python](https://www.python.org/)（推荐3.10+版本）
+2. 准备有效的API密钥（当前使用硅流平台）
 
-- 🎯 智能优化提示词
-- 💡 提供详细的优化建议
-- 🔄 实时优化反馈
-- 📝 优化历史记录
-- 🎨 美观的用户界面
-
-## 技术栈
-
-- Python 3.10+
-- Streamlit
-- OpenAI API
-- Pandas
-
-## 本地开发设置
-
-### 1. 克隆项目
-
-git clone <your-repository-url>
-
-git clone <your-repository-url>
-
-cd ai-prompt-optimizer
-
-### 2. 创建虚拟环境
-
-# Windows
-python -m venv venv
-.\venv\Scripts\activate
-
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-
-### 3. 安装依赖
-
+### 安装步骤
+1. 克隆仓库
+```bash
+git clone https://github.com/yourusername/ai-project.git
+cd ai-project
+```
+2. 安装依赖
+```bash
 pip install -r requirements.txt
+```
 
-### 4. 配置环境变量
+### 🔑 密钥配置
+1. 复制`.env.example`文件并重命名为`.env`
+2. 修改配置文件：
 
-1. 在项目根目录创建 `.env` 文件
-2. 添加以下配置：
+```env:.env
+# 硅流平台API配置（保持与当前配置一致）
+OPENAI_API_BASE = "https://api.siliconflow.cn/v1/"
+OPENAI_API_KEY = "你的专属密钥"  # 在此处填写真实密钥
+```
 
-OPENAI_API_KEY=your-api-key-here
-OPENAI_API_BASE=https://api.siliconflow.cn/v1/
+## 📋 使用指南
+### 基础功能
+```python
+# 示例代码（需根据实际项目补充）
+from ai_module import create_chat
 
-### 5. 运行项目
+response = create_chat("你好，世界！")
+print(response)
+```
 
-streamlit run app.py
+### 功能列表
+✅ 智能对话系统  
+✅ 文本理解与生成  
+✅ [在此补充其他功能]  
 
-## 部署说明
-
-### Zeabur 部署步骤
-
-1. 在 Zeabur 控制台创建新项目
-2. 连接 GitHub 仓库
-3. 在项目设置中添加环境变量：
-   - `OPENAI_API_KEY`
-   - `OPENAI_API_BASE`（可选）
-4. 部署项目
-
-### 其他部署方式
-
-- 使用 Docker 部署
-- 使用 Kubernetes 部署
-- 使用 AWS 部署
-- 使用 Azure 部署
-- 使用 Google Cloud 部署
-
-## 项目结构
-
-- `app.py` - 主应用文件
-- `prompt.py` - 提示词优化逻辑
-- `requirements.txt` - 依赖列表
-- `README.md` - 项目说明
-
-## 贡献者
-
-- [@your-github-username](https://github.com/your-github-username)
-
-## 许可证
-
-MIT
-
-## 致谢
-
-- [OpenAI](https://openai.com)
-- [Streamlit](https://streamlit.io)
-- [Pandas](https://pandas.pydata.org)
-- [Zeabur](https://zeabur.com)
-   
+## ⚠️ 注意事项
+1. 请妥善保管API密钥，不要上传到公开仓库
+2. 调用频率限制：硅流平台默认每分钟60次请求
+3. 遇到问题请先检查网络连接和密钥有效性
