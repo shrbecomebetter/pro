@@ -39,24 +39,25 @@ class InstructionOptimizer:
         self.thinking_buffer: str = ""
         self.last_thought: Optional[str] = None
         self.response_buffer: str = ""
-
-    def _process_think_tag(self, content: str) -> None:
-        """处理包含<thinking>标签的内容"""
-        if '<thinking>' in content.lower():
-            self.thinking_buffer = ""
-            content = content.split('<thinking>')[-1]
-            
-        if '</thinking>' in content.lower():
-            self.thinking_buffer += content.split('</thinking>')[0]
-            self.last_thought = self.thinking_buffer.strip()
-            self.thinking_buffer = ""
-        elif self.thinking_buffer:
-            self.thinking_buffer += content
-
+    
+    # def _process_think_tag(self, content: str) -> None:
+    #     """处理包含<thinking>标签的内容"""
+    #     # if '<thinking>' in content.lower():
+    #     #     self.thinking_buffer = ""
+    #     #     content = content.split('<thinking>')[-1]
+    #     
+    #     # if '</thinking>' in content.lower():
+    #     #     self.thinking_buffer += content.split('</thinking>')[0]
+    #     #     self.last_thought = self.thinking_buffer.strip()
+    #     #     self.thinking_buffer = ""
+    #     # elif self.thinking_buffer:
+    #     #     self.thinking_buffer += content
+    
     def _process_stream_response(self, response) -> str:
         """处理流式响应并返回可视化内容"""
         final_output = ""
         for chunk in response:
+
             if chunk.choices[0].delta.content:
                 content = chunk.choices[0].delta.content
                 
@@ -91,7 +92,7 @@ class InstructionOptimizer:
             if not final_output:
                 return "优化过程未能生成有效结果，请重试"
                 
-            self.context.append({'role': 'assistant', 'content': final_output})
+            #self.context.append({'role': 'assistant', 'content': final_output})
             return final_output
             
         except Exception as e:
