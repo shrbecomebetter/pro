@@ -61,12 +61,12 @@ class InstructionOptimizer:
                 content = chunk.choices[0].delta.content
                 
                 # 处理思考内容
-                self._process_think_tag(content)
+                #self._process_think_tag(content)
                 
                 # 构建最终输出
-                if not self.thinking_buffer:
-                    final_output += content
-                    print(content, end='', flush=True)
+                #if not self.thinking_buffer:
+                final_output += content
+                print(content, end='', flush=True)
         
         return final_output
 
