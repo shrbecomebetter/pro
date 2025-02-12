@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import os
 from dotenv import load_dotenv
+import asyncio
 
 # 加载环境变量
 load_dotenv()
@@ -137,6 +138,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# 新增安全运行函数
+def async_safe_run(coro):
+    try:
+        loop = asyncio.get_event_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    return loop.run_until_complete(coro)
+
 # 页面内容
 st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
@@ -212,7 +221,11 @@ with col2:
                 """, unsafe_allow_html=True)
             try:
                 from prompt import optimize_prompt
-                optimized_prompt = optimize_prompt(user_prompt)
+                # 在调用async_optimize之前添加这个函数
+                async def async_optimize(prompt):
+                    """异步包装同步函数"""
+                    return await asyncio.to_thread(optimize_prompt, prompt)
+                optimized_prompt = async_safe_run(async_optimize(user_prompt))
                 if optimized_prompt:
                     if "发生错误" in optimized_prompt or "API密钥配置错误" in optimized_prompt or "连接API服务器失败" in optimized_prompt:
                         st.error(optimized_prompt)
